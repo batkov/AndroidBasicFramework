@@ -1,10 +1,11 @@
 package com.ericalarcon.basicframework.Templates;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
+
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -146,9 +147,9 @@ public abstract class NavigationActivity extends AppCompatActivity implements Se
         //call abstract method to get the first fragment in the stack (root fragment) must be implemented in the Activity extending NavigationActivity
         Fragment first = firstFragment();
         //check if the fragment already exists, in this case we don't need to re-add it.
-        if(getFragmentManager().findFragmentById(R.id.frameMaster) == null) {
+        if(getSupportFragmentManager().findFragmentById(R.id.frameMaster) == null) {
             //start FragmentTransaction to add root fragment
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.add(R.id.frameMaster, first);
             fragmentTransaction.commitAllowingStateLoss();
             //add the root fragment to the stack
@@ -178,7 +179,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements Se
         //if frameDetail exists and want to show it:
         if(showAsDetailFragmentIfPossible && findViewById(R.id.frameDetail) != null){
             //start FragmentTransaction to add new fragment
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.add(R.id.frameDetail,newFragment);
             transaction.commitAllowingStateLoss();
             if(!isShowingDetailFragment)
@@ -189,7 +190,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements Se
             isShowingDetailFragment = false;
 
             //start FragmentTransaction to add new fragment and animate it
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
             //set animation depending on the animationType parameter
             if(animation == animationType.RIGHT_TO_LEFT){
@@ -283,7 +284,7 @@ public abstract class NavigationActivity extends AppCompatActivity implements Se
         getSupportActionBar().setDisplayHomeAsUpEnabled((getFragmentsStack().size() > 1) || showBackButtonInFirstFragment());
 
         //pop from Android BackStack. This will start the animation to go back to the previous fragment
-        getFragmentManager().popBackStack();
+        getSupportFragmentManager().popBackStack();
 
         //restore Title that is shown in the actionBar
         if(getTitlesStack().size() > 0){

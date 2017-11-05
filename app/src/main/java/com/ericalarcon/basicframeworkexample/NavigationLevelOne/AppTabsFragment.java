@@ -1,8 +1,8 @@
 package com.ericalarcon.basicframeworkexample.NavigationLevelOne;
 
-import android.app.Fragment;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 
 import com.ericalarcon.basicframework.Templates.BFMenu;
 import com.ericalarcon.basicframework.Templates.BFMenuItem;

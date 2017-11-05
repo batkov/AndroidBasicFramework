@@ -1,6 +1,6 @@
 package com.ericalarcon.basicframeworkexample;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 
 import com.ericalarcon.basicframework.Templates.NavigationActivity;
 import com.ericalarcon.basicframeworkexample.NavigationLevelOne.AppTabsFragment;

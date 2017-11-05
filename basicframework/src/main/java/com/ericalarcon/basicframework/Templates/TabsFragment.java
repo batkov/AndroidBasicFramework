@@ -1,11 +1,11 @@
 package com.ericalarcon.basicframework.Templates;
 
-import android.app.FragmentManager;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v13.app.FragmentStatePagerAdapter;
-import android.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
@@ -19,7 +19,7 @@ import com.ericalarcon.basicframework.R;
 
  */
 public abstract class TabsFragment extends Fragment {
-    public abstract android.app.Fragment getTabFragment(int position);
+    public abstract Fragment getTabFragment(int position);
     public abstract int getTabCount();
     public abstract TabGravityItemType getTabGravity();
     public abstract String getTabTitle(int position);
@@ -114,7 +114,7 @@ public abstract class TabsFragment extends Fragment {
         }
 
         @Override
-        public android.app.Fragment getItem(int position) {
+        public Fragment getItem(int position) {
             return getTabFragment(position);
         }
 
